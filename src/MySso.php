@@ -22,8 +22,9 @@ class MySso
 		$broker = new Broker($this->url, $this->broker, $this->secret);
 		$broker->attach(true);
 
-		$broker->login($username, $password);
+		$user = $broker->login($username, $password);
 
+		return $user;
 	}
 
 	public function logout()
@@ -40,6 +41,8 @@ class MySso
 		$broker->attach(true);
 
 		$user = $broker->getUserInfo();
+
+		return $user;
 	}
 }
 
