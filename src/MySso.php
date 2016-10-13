@@ -23,7 +23,6 @@ class MySso
 		$broker->attach(true);
 
 		$user = $broker->login($username, $password);
-
 		return $user;
 	}
 
@@ -41,7 +40,6 @@ class MySso
 		$broker->attach(true);
 
 		$user = $broker->getUserInfo();
-
 		return $user;
 	}
 }
