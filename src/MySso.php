@@ -13,8 +13,8 @@ class MySso
 	public function __construct($url, $broker, $secret)
 	{
 		$this->url = $url;
-        	$this->broker = $broker;
-        	$this->secret = $secret;
+        $this->broker = $broker;
+        $this->secret = $secret;
 	}
 
 	public function login($username, $password)
