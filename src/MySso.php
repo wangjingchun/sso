@@ -13,8 +13,8 @@ class MySso
 	public function __construct($url, $broker, $secret)
 	{
 		$this->url = $url;
-        $this->broker = $broker;
-        $this->secret = $secret;
+        	$this->broker = $broker;
+        	$this->secret = $secret;
 	}
 
 	public function login($username, $password)
@@ -34,7 +34,7 @@ class MySso
 		$broker->logout();
 	}
 
-	public function getuserInfo()
+	public function getUserInfo()
 	{
 		$broker = new Broker($this->url, $this->broker, $this->secret);
 		$broker->attach(true);
