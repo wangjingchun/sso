@@ -215,11 +215,11 @@ class Broker
         }*/
 
         $data = json_decode($response, true);
-        if ($httpCode == 403) {
+        /*if ($httpCode == 403) {
             $this->clearToken();
             throw new NotAttachedException($data['error'] ?: $response, $httpCode);
         }
-        if ($httpCode >= 400) throw new Exception($data['error'] ?: $response, $httpCode);
+        if ($httpCode >= 400) throw new Exception($data['error'] ?: $response, $httpCode);*/
 
         return $data;
     }
