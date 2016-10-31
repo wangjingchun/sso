@@ -59,6 +59,20 @@ class MySso
 		$user = $broker->getUserInfo();
 		return $user;
 	}
+
+	public function flushUserInfo($uid = null)
+	{
+		if (is_null($uid)) {
+			throw new \InvalidArgumentException("uid not specified");
+		}
+
+		$broker = new Broker($this->url, $this->broker, $this->secret);
+		$broker->attach(true);
+
+		$user = $broker->flushUserInfo($uid);
+		return $user;
+	}
+
 }
 
 

@@ -270,6 +270,20 @@ class Broker
     }
 
     /**
+     * Flush user information.
+     *
+     * @return array
+     */
+    public function flushUserInfo($uid = null)
+    {
+        if (isset($this->userinfo)) {
+            $this->userinfo = $this->request('POST', 'flushUser', compact('uid'));
+        }
+
+        return $this->userinfo;
+    }
+
+    /**
      * Magic method to do arbitrary request
      *
      * @param string $fn
