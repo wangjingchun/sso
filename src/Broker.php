@@ -236,12 +236,12 @@ class Broker
      * @return array  user info
      * @throws Exception if login fails eg due to incorrect credentials
      */
-    public function login($username = null, $password = null, $rememberMe = 0)
+    public function login($username = null, $password = null, $jump = null, $rememberMe = 0)
     {
         if (!isset($username) && isset($_POST['username'])) $username = $_POST['username'];
         if (!isset($password) && isset($_POST['password'])) $password = $_POST['password'];
 
-        $result = $this->request('POST', 'login', compact('username', 'password', 'rememberMe'));
+        $result = $this->request('POST', 'login', compact('username', 'password', 'jump', 'rememberMe'));
         $this->userinfo = $result;
 
         return $this->userinfo;
@@ -250,9 +250,10 @@ class Broker
     /**
      * Logout at sso server.
      */
-    public function logout()
+    public function logout($jump = null)
     {
-        $this->request('POST', 'logout', 'logout');
+        $result = $this->request('POST', 'logout', compact('jump'));
+        return $result;
     }
 
     /**

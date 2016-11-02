@@ -27,7 +27,7 @@ class MySso
         $this->secret = $secret;
 	}
 
-	public function login($username = null, $password = null, $rememberMe = 0)
+	public function login($username = null, $password = null, $jump = null, $rememberMe = 0)
 	{
 		if (is_null($username)) {
 			throw new \InvalidArgumentException("username not specified");
@@ -39,16 +39,16 @@ class MySso
 		$broker = new Broker($this->url, $this->broker, $this->secret);
 		$broker->attach(true);
 
-		$user = $broker->login($username, $password, $rememberMe);
+		$user = $broker->login($username, $password, $jump, $rememberMe);
 		return $user;
 	}
 
-	public function logout()
+	public function logout($jump = null)
 	{
 		$broker = new Broker($this->url, $this->broker, $this->secret);
 		$broker->attach(true);
 
-		$broker->logout();
+		return $broker->logout($jump);
 	}
 
 	public function getUserInfo()
