@@ -27,7 +27,7 @@ class MySso
         $this->secret = $secret;
 	}
 
-	public function login($username = null, $password = null)
+	public function login($username = null, $password = null, $rememberMe = 0)
 	{
 		if (is_null($username)) {
 			throw new \InvalidArgumentException("username not specified");
@@ -39,7 +39,7 @@ class MySso
 		$broker = new Broker($this->url, $this->broker, $this->secret);
 		$broker->attach(true);
 
-		$user = $broker->login($username, $password);
+		$user = $broker->login($username, $password, $rememberMe);
 		return $user;
 	}
 
